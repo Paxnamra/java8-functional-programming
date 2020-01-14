@@ -1,4 +1,4 @@
-package writing_simple_lambda_expressions;
+package _2_2_writing_simple_lambda_expressions;
 
 import java.util.function.IntBinaryOperator;
 
