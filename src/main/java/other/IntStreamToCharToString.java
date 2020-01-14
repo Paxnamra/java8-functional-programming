@@ -8,8 +8,16 @@ public class IntStreamToCharToString {
         //Integers to chars and to String as numbers
 
         IntStream stream = "aibohphobia".chars();
-        String result = stream.map(Character::getNumericValue).collect(StringBuilder::new, StringBuilder::append, StringBuilder::append).toString();
+        IntStream stream2 = "aibohphobia".chars();
+
+        String result = stream2.collect(StringBuilder::new, StringBuilder::append, StringBuilder::append).toString();
+
+        String result2 = stream.collect(StringBuilder::new,
+                (sb, s1) -> sb.append(s1).append(" "),
+                (sb1, sb2) -> sb1.append(sb2.toString())).toString();
 
         System.out.println(result);
+        System.out.println("--------");
+        System.out.println(result2);
     }
 }
