@@ -1,5 +1,6 @@
 package _2_6_writing_closures;
 
+import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
 
 public class Step2 {
@@ -23,11 +24,14 @@ public class Step2 {
 
         UnaryOperator<String> u = s -> prefix + s.trim() + suffix;
 
+        Consumer<String> consumerStr = cs ->
+                System.out.println(prefix + cs.trim() + suffix);
+
+        //unaryOperators
         System.out.println(unaryString.apply("<3"));
         System.out.println(unary.apply("D:"));
-        System.out.println(unary.apply("^^"));
-
-
-
+        System.out.println(u.apply("^^"));
+        //same print result with consumer
+        consumerStr.accept("<<Cookie>>");
     }
 }
