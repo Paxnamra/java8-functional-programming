@@ -23,6 +23,7 @@ public class Step1 {
         List<Department> departments = new ArrayList<>(Arrays.asList(dep1, dep2));
         System.out.println("No department code filtering: " + calcNumberOfEmployeesNoUpfrontFiltering(departments, 20000L));
         System.out.println("With department filtering: " + calcNumberOfEmployeesUpfrontCodeFiltering(departments, 20000L));
+        System.out.println("With department filtering: " + calcNumberOfEmployeesUpfrontCodeFiltering2(departments, 20000L));
     }
 
     public static long calcNumberOfEmployeesNoUpfrontFiltering(List<Department> departments, long threshold) {
@@ -40,6 +41,14 @@ public class Step1 {
                         .stream()
                         .map(Employee::getSalary)
                         .filter(e -> e >= threshold))
+                .count();
+    }
+
+    public static long calcNumberOfEmployeesUpfrontCodeFiltering2(List<Department> departments, long threshold) {
+        return departments.stream()
+                .filter(d -> d.getCode().startsWith("111-")).flatMap(d -> d.getEmployee()
+                        .stream()
+                        .filter(e -> e.getSalary() >= threshold))
                 .count();
     }
 }
