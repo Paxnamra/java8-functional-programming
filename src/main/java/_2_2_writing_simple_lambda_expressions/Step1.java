@@ -1,5 +1,7 @@
 package _2_2_writing_simple_lambda_expressions;
 
+import _2_2_writing_simple_lambda_expressions.extra.CustomIntBinaryOperator;
+
 import java.util.function.IntBinaryOperator;
 
 /**
@@ -16,4 +18,7 @@ public class Step1 {
     public static IntBinaryOperator solutionOne = (x, y) -> {
         return (x >= y) ? x : y;
     };
+
+    //with custom functional interface
+    public static CustomIntBinaryOperator cibo = (x, y) -> 0;
 }
