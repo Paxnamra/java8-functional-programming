@@ -11,10 +11,10 @@ import java.util.function.LongFunction;
 public class Step2 {
 
     //oneliner
-    public static LongFunction<Long> lFunc = (x) -> (x % 2 != 0) ? x + 1 : x + 2;
+    public LongFunction<Long> lFuncLine = (x) -> (x % 2 != 0) ? x + 1 : x + 2;
 
     //a bit more sophisticated
-    public static LongFunction<Long> lFunc2 = (x) -> {
+    public LongFunction<Long> lFuncSophisticated = (x) -> {
         if (x % 2 != 0) {
             return x + 1;
         } else {
