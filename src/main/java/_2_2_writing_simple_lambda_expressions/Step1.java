@@ -12,13 +12,13 @@ import java.util.function.IntBinaryOperator;
 public class Step1 {
 
     //shortest version
-    public static IntBinaryOperator solutionThree = Math::max;
+    public IntBinaryOperator solutionThree = Math::max;
 
     //old-fashioned version
-    public static IntBinaryOperator solutionOne = (x, y) -> {
+    public IntBinaryOperator solutionOne = (x, y) -> {
         return (x >= y) ? x : y;
     };
 
     //with custom functional interface
-    public static CustomIntBinaryOperator cibo = (x, y) -> 0;
+    public CustomIntBinaryOperator cibo = (x, y) -> 0;
 }
