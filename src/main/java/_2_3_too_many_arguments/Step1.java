@@ -10,8 +10,10 @@ import java.util.stream.Stream;
 
 public class Step1 {
 
-    //both do the same
+    //with spaces
     public MultiStringFunction sumsWords = (String... s) -> Stream.of(s).map(String::toUpperCase).reduce("", String::concat);
+
+    //without spaces
     public MultiStringFunction sumsWordsToo = (String... s) -> Stream.of(s).map((String b) -> b.toUpperCase().replace(" ", "")).reduce("", String::concat);
 
     //accepted solution
