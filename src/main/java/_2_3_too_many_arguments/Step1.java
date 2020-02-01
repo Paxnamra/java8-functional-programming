@@ -1,6 +1,5 @@
 package _2_3_too_many_arguments;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 /**
@@ -14,9 +13,6 @@ public class Step1 {
     //both do the same
     public MultiStringFunction sumsWords = (String... s) -> Stream.of(s).map(String::toUpperCase).reduce("", String::concat);
     public MultiStringFunction sumsWordsToo = (String... s) -> Stream.of(s).map((String b) -> b.toUpperCase().replace(" ", "")).reduce("", String::concat);
-
-    //experiment with ints
-    public MultiIntFunction sumOfInts = (int... i) -> Arrays.stream(i).sum();
 
     //accepted solution
     public UglyStringFunction stringConcat = (x1, x2, x3, x4, x5, x6, x7) -> (x1 + x2 + x3 + x4 + x5 + x6 + x7).toUpperCase();
