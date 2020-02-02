@@ -12,13 +12,7 @@ public class AscDescSort {
                 .mapToInt(Integer::parseInt)
                 .toArray();
 
-        BiFunction<Integer, Integer, Integer> comparator = (i1, i2) -> {
-            if (isAscending) {
-                return (i1 <= i2) ? i1 : i2;
-            } else {
-                return (i1 >= i2) ? i1 : i2;
-            }
-        };
+        BiFunction<Integer, Integer, Integer> comparator = isAscending ? Math::min : Math::max;
 
         sort(array, comparator);
         Arrays.stream(array).forEach(e -> System.out.print(e + " "));
