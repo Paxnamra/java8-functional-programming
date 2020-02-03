@@ -35,8 +35,8 @@ public class Account {
     }
 
     public Predicate<Account> accountsWithTooMuchMoney() {
-        return account -> account.getBalance() > 10000L
-                && account.isLocked;
+        return account -> account.getBalance() >= 100_000_000L
+                && !account.isLocked;
     }
 
     public List<Account> filter(List<Account> accList, Predicate<Account> f) {

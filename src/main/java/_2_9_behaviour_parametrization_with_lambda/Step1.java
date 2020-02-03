@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+//Write a code for filtering the accounts list in two ways:
+//get list with all non-empty accounts (balance > 0) and save it to the variable nonEmptyAccounts
+//get all non-locked accounts with too much money (balance >= 100 000 000) and save it to the variable accountsWithTooMuchMoney
+
 public class Step1 {
     public static void main(String[] args) {
 
