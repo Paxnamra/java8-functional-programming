@@ -3,6 +3,13 @@ package jetBrains_academy;
 import java.util.*;
 import java.util.function.*;
 
+/**
+ * It is always nice to have one function that can sort array both ascending and descending. This function is implemented below and based on bubble sorting algorithm.
+ * The function takes 2 parameters - array and comparison function.
+ * The comparison function should take 2 parameters and return the minimum of the two if the array should be sorted in the ascending order,
+ * and the maximum of the two if the array should be sorted in the descending order.
+ */
+
 public class AscDescSort {
 
     public static void main(String[] args) {
