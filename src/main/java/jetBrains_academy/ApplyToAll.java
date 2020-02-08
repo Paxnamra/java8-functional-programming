@@ -1,7 +1,8 @@
 package jetBrains_academy;
 
-import java.util.*;
-import java.util.function.*;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.function.Function;
 
 /**
  * You need to implement a method that applies given function to all elements of the given array.
@@ -10,7 +11,9 @@ import java.util.function.*;
 
 public class ApplyToAll {
     public static <T> void applyFunction(T[] array, Function<T, T> func) {
-        // write your code here
+        for (int i = 0; i < array.length; i++) {
+            array[i] = func.apply(array[i]);
+        }
     }
 
     // do not change code below
@@ -18,6 +21,7 @@ public class ApplyToAll {
         Scanner scanner = new Scanner(System.in);
         String method = scanner.nextLine();
         String[] array = scanner.nextLine().split(" ");
+
         applyFunction(array,
                 "lower".equals(method) ? String::toLowerCase :
                 "upper".equals(method) ? String::toUpperCase :
