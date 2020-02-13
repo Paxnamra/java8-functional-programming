@@ -2,6 +2,7 @@ package _2_12_composing_predicates;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.IntPredicate;
 
 /**
@@ -18,19 +19,14 @@ public class Step1 {
      */
 
     public static IntPredicate disjunctAll(List<IntPredicate> predicates) {
-        IntPredicate res = null;
+        IntPredicate defaultPredicate = val -> false;
+        //Predicate hfjdk = cal -> false;
+        //Function hjfkds = val -> false;
 
-        if (!predicates.isEmpty()) {
-            for (int i = 1; i < predicates.size(); i++) {
-                res = predicates.get(0).or(predicates.get(i));
-            }
-        }
-        return res;
-    }
-
-    public static IntPredicate disjunctAllShortened(List<IntPredicate> predicates) {
-        IntPredicate res = predicates.get(0).or(predicates.get(1));
-        return predicates.stream().reduce(res, IntPredicate::or);
+        return Optional.ofNullable(predicates)
+                .map(p -> predicates.stream()
+                .reduce(defaultPredicate, IntPredicate::or))
+                .orElse(defaultPredicate);
     }
 
     public static void main(String[] args) {
@@ -38,9 +34,11 @@ public class Step1 {
         IntPredicate one = x -> x % 2 == 0;
         IntPredicate two = y -> y - 3 > 0;
         List<IntPredicate> predList = Arrays.asList(one, two);
+        List<IntPredicate> emptyPredList = null;
 
         System.out.println(disjunctAll(predList).test(3));
-        System.out.println(disjunctAllShortened(predList).test(5));
+        System.out.println(disjunctAll(predList).test(5));
 
+        System.out.println(disjunctAll(emptyPredList).test(4));
     }
 }
