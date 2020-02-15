@@ -1,6 +1,5 @@
 package jetBrains_academy;
 
-import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -11,11 +10,6 @@ public class TernaryOperator {
             Function<? super T, ? extends U> ifTrue,
             Function<? super T, ? extends U> ifFalse) {
 
-        return condition != null ? String.valueOf(ifTrue.apply(T)) : ifFalse.apply(T);
-    }
-
-    public static void main(String[] args) {
-
-        ternaryOperator(Objects::isNull, Object::toString, o -> "0").apply("Trolololo");
+        return obj -> condition.test(obj) ? ifTrue.apply(obj) : ifFalse.apply(obj);
     }
 }
