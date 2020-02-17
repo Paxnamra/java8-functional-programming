@@ -11,6 +11,7 @@ import java.util.stream.LongStream;
 
 public class Step1 {
 
+    //BigInteger for really big numbers
     public static long factorial(long n) {
         BigInteger result = LongStream.iterate(1, v -> v + 1)
                 .limit(n).mapToObj(BigInteger::valueOf)
@@ -18,9 +19,17 @@ public class Step1 {
         return result.longValue();
     }
 
+    //simplified assuming that number isn't too big for long value
+    public static long factorialLong(long n) {
+        return LongStream.iterate(1, x -> x + 1).limit(n).reduce(1, (z, y) -> z * y);
+    }
+
     public static void main(String[] args) {
 
         System.out.println(factorial(0));
         System.out.println(factorial(5));
+
+        System.out.println(factorialLong(0));
+        System.out.println(factorialLong(5));
     }
 }
