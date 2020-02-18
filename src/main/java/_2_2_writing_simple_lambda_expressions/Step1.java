@@ -12,10 +12,13 @@ import java.util.function.IntBinaryOperator;
 public class Step1 {
 
     //shortest version
-    public IntBinaryOperator solutionThree = Math::max;
+    public IntBinaryOperator solutionOne = Math::max;
 
-    //old-fashioned version
-    public IntBinaryOperator solutionOne = (x, y) -> {
+    //one-liner with no return
+    public IntBinaryOperator solutionTwo = (x, y) -> (x >= y) ? x : y;
+
+    //version with return
+    public IntBinaryOperator solutionThree = (x, y) -> {
         return (x >= y) ? x : y;
     };
 
