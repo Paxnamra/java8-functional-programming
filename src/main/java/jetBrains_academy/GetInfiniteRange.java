@@ -1,7 +1,6 @@
 package jetBrains_academy;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
@@ -13,12 +12,21 @@ import java.util.stream.IntStream;
 
 public class GetInfiniteRange {
 
+    //AtomicInteger way
     public static Supplier<Integer> getInfiniteRange() {
+        AtomicInteger val = new AtomicInteger();
+        return val::getAndIncrement;
+    }
 
-        AtomicInteger createZero = new AtomicInteger();
-        IntSupplier is = () -> 0;
-        Supplier<Integer> in = () -> IntStream.generate();
-        return in;
+    //iterator way
+    public static Supplier<Integer> getInfiniteRangeIterator() {
+        return IntStream.iterate(0, i -> i + 1).iterator()::next;
+    }
+
+    //increment by incrementing array index
+    public static Supplier<Integer> getInfiniteRangeIncrementInsideArray() {
+        final int[] i = {0};
+        return () -> i[0]++;
     }
 
     public static void main(String[] args) {
@@ -26,8 +34,28 @@ public class GetInfiniteRange {
         Supplier<Integer> sup1 = getInfiniteRange();
         Supplier<Integer> sup2 = getInfiniteRange();
 
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.print(sup1.get() + " " + sup2.get() + " ");
+        }
+
+        System.out.println();
+        System.out.println("-----------------------------------");
+
+        Supplier<Integer> sup3 = getInfiniteRangeIncrementInsideArray();
+        Supplier<Integer> sup4 = getInfiniteRangeIncrementInsideArray();
+
+        for (int i = 0; i < 5; i++) {
+            System.out.print(sup3.get() + " " + sup4.get() + " ");
+        }
+
+        System.out.println();
+        System.out.println("-----------------------------------");
+
+        Supplier<Integer> sup5 = getInfiniteRangeIterator();
+        Supplier<Integer> sup6 = getInfiniteRangeIterator();
+
+        for (int i = 0; i < 5; i++) {
+            System.out.print(sup5.get() + " " + sup6.get() + " ");
         }
     }
 }
