@@ -24,6 +24,9 @@ public class StreamGenerateFun {
         Stream.generate(() -> new Random().nextInt(8))
                 .limit(2)
                 .forEach(System.out::println);
+        
+        int select = IntStream.of(new Random().nextInt(5)).reduce(0, Integer::sum);
+        System.out.println("Selected: " + select);
 
         //supplier creating 2 random numbers in all ints range
         System.out.println("All ints range: ");
