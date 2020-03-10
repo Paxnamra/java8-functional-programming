@@ -16,9 +16,18 @@ public class SimpleCypher {
                 System.out.print(text.substring(i, i + 1));
             }
         }
-
         System.out.println();
 
+        //stream rulez!
+        String result = text.chars()
+                .map(i -> Character.isLetter(i) ? 219 - i : i)
+                .mapToObj(Character::toChars)
+                .map(String::new)
+                .collect(Collectors.joining());
+
+        System.out.println(result);
+
+        //IntStream iterate? 
         String s = text.chars().filter(o -> o != ' ').map(e -> 97 - e + 122).mapToObj(r -> (char) r).collect(StringBuilder::new,
                 (sb, s1) -> sb.append(s1),
                 (sb1, sb2) -> sb1.append(sb2.toString())).toString();
